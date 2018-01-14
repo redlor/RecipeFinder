@@ -76,7 +76,7 @@ public class QueryResult extends AppCompatActivity {
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
-        // Calls the Interface for handlind the custom request
+        // Calls the Interface for handling the custom request
         Call<RecipeResponse> call = apiService.getRepo(API_KEY, passedTitle);
         call.enqueue(new Callback<RecipeResponse>() {
             @Override
@@ -86,7 +86,7 @@ public class QueryResult extends AppCompatActivity {
                 List<Recipe> recipes = response.body().getRecipes();
                 Log.d(LOG_TAG, "Number of recipes received: " + recipes.size());
 
-                // If a list of Recipes has been received, set the onClickListener on eache item
+                // If a list of Recipes has been received, set the onClickListener on each item
                 if (recipes != null && !recipes.isEmpty()) {
                     recyclerView.setAdapter(new RecipeAdapter(recipes, R.layout.recipe_list_item, getApplicationContext(), new RecipeAdapter.OnItemClickListener() {
                         @Override
